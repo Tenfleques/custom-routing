@@ -1,13 +1,14 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component} from 'react'
+import PropTypes from 'prop-types';
 import { update } from './instance'
 
 const historyPush = (path) => {
-  history.pushState({}, null, path)
+  window.history.pushState({}, null, path)
   update()
 }
 
 const historyReplace = (path) => {
-  history.replaceState({}, null, path)
+  window.history.replaceState({}, null, path)
   update()
 }
 

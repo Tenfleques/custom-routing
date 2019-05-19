@@ -1,7 +1,6 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component} from 'react'
+import PropTypes from 'prop-types';
 import { register, unregister } from './instance'
-
-
 
 const matchPath = (pathname, options) => {
   const { exact = false, path } = options
@@ -38,13 +37,13 @@ export default class Route extends Component {
   }
 
   componentWillMount () {
-    addEventListener('popstate', this.handlePop)
+    window.addEventListener('popstate', this.handlePop)
     register(this)
   }
 
   componentWillUnmount () {
     unregister(this)
-    removeEventListener('popstate', this.handlePop)
+    window.removeEventListener('popstate', this.handlePop)
   }
 
   handlePop () {
@@ -53,7 +52,7 @@ export default class Route extends Component {
 
   render () {
     const { path, exact, component, render } = this.props
-    const match = matchPath(location.pathname, { path, exact })
+    const match = matchPath(window.location.pathname, { path, exact })
 
     if (!match) {
       return null
