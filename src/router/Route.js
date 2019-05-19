@@ -58,8 +58,6 @@ export default class Route extends Component {
       return null
     }
     if (component) {
-      
-      //return React.createComponent(component, { match })
       return component({match});
     }
     if (render) {
